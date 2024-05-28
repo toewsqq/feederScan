@@ -63,7 +63,7 @@ public class gui {
 
         JFrame frame = new JFrame("Feeder scan Beta version");
         // Setting the width and height of framez
-        frame.setSize(550, 300);
+        frame.setSize(850, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         /* Creating panel. This is same as a div tag in HTML
@@ -87,53 +87,59 @@ public class gui {
 
         panel.setLayout(null);
 
+        JLabel moLabel = new JLabel("MO");
+
+        moLabel.setBounds(10, 20, 80, 25);
+        panel.add(moLabel);
 
         JLabel jobNameLabel = new JLabel("PART");
 
-        jobNameLabel.setBounds(10, 20, 80, 25);
+        jobNameLabel.setBounds(10, 80, 80, 25);
         panel.add(jobNameLabel);
 
         JLabel status = new JLabel("Module");
 
-        status.setBounds(10, 80, 80, 25);
+        status.setBounds(10, 120, 80, 25);
         panel.add(status);
 
         JLabel operations = new JLabel("Position");
 
-        operations.setBounds(10, 120, 80, 25);
+        operations.setBounds(10, 160, 80, 25);
         panel.add(operations);
 
         JLabel smdOperations = new JLabel("SIDE");
 
-        smdOperations.setBounds(10, 160, 110, 25);
+        smdOperations.setBounds(10, 200, 110, 25);
         panel.add(smdOperations);
 
         JTextField userText = new JTextField(20);
-        userText.setBounds(130, 20, 165, 25);
+        userText.setBounds(130, 80, 165, 25);
         panel.add(userText);
 
         JTextField userText2 = new JTextField(20);
-        userText2.setBounds(130, 80, 365, 25);
+        userText2.setBounds(130, 120, 365, 25);
         panel.add(userText2);
 
         JTextField userText3 = new JTextField(20);
-        userText3.setBounds(130, 120, 365, 25);
+        userText3.setBounds(130, 160, 365, 25);
         panel.add(userText3);
 
         JTextField userText4 = new JTextField(20);
-        userText4.setBounds(130, 160, 365, 25);
+        userText4.setBounds(130, 200, 365, 25);
         panel.add(userText4);
 
-        JButton button = new JButton("Show");
-        ActionListener actionListener = new ActionListener() {
+        JTextField userText5 = new JTextField(20);
+        userText5.setBounds(130, 20, 365, 25);
+        panel.add(userText5);
+
+        //JButton button = new JButton("Show");
+        userText.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String input = userText.getText();
-                //BomEditor bomEditor = new BomEditor(bomName);
-                //ArrayList result= new Result().createList();
                 String[] inputText = input.split("-");
                 input = inputText[0];
-                String[] array = new Result().result(input);
+                String[] array = new Result().result(input,userText5.getText());
                // BomEditor bomResult = new BomResult().bomEditor(bomName);
                 String machine = array[0];
                 String side = array[1];
@@ -145,12 +151,43 @@ public class gui {
                 userText.setText("");
 
             }
-        };
+        });
 
-        button.addActionListener(actionListener);
-        userText.addActionListener(actionListener);
-        button.setBounds(300, 20, 80, 25);
-        panel.add(button);
+       // button.addActionListener(actionListener);
+        //userText.addActionListener(actionListener);
+        //button.setBounds(300, 20, 80, 25);
+        //panel.add(button);
+        // Adding a new button "Clear"
+//        JButton clearButton = new JButton("Clear");
+//        clearButton.setBounds(900, 20, 80, 25);
+//        panel.add(clearButton);
+
+        // Clear Button ActionListener
+        userText5.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                userText5.setEnabled(false);
+                userText.requestFocus();
+            }
+        });
+
+        // Unlock Button
+        JButton unlockButton = new JButton("Unlock");
+        unlockButton.setBounds(500, 20, 80, 25);
+        panel.add(unlockButton);
+
+        // Unlock Button ActionListener
+        unlockButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                userText5.setEnabled(true); // Enable the text field
+                userText5.setText("");
+            }
+        });
+
+//        clearButton.addActionListener(clearActionListener);
+//        userText5.addActionListener(actionListener);
+
     }
 }
 

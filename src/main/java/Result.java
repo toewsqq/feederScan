@@ -9,14 +9,14 @@ import java.util.Scanner;
 //ICS6400-V22305-16
 
 public class Result {
-    public ArrayList createList() {
+    public ArrayList createList(String name) {
 //        Scanner scanner = new Scanner(System.in);
 //        System.out.println("Enter the value to match: ");
 //        String userInput = scanner.nextLine().trim();
 //        String[] inputText = userInput.split("-");
 //        userInput = inputText[0];
         String currentWorkingDir = System.getProperty("user.dir");
-        String fileForEdit = currentWorkingDir + File.separator + "t4.txt";
+        String fileForEdit = currentWorkingDir + File.separator + name + ".txt";
         String machine = "Aimex 2";
         ArrayList<FeederScaner> feederScanerArrayList = new ArrayList<>();
         // Initialize BufferedReader
@@ -53,8 +53,8 @@ public class Result {
         return feederScanerArrayList;
 
     }
-    public String[] result(String userInput) {
-        ArrayList<FeederScaner> feederScanerArrayList = new ArrayList(createList());
+    public String[] result(String userInput, String name) {
+        ArrayList<FeederScaner> feederScanerArrayList = new ArrayList(createList(name));
         String [] values = new String[3];
         for (FeederScaner feederScaner : feederScanerArrayList) {
             // System.out.println(feederScaner.getPart()); String substring = "welcome";

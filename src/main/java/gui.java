@@ -30,55 +30,87 @@ public class gui {
 
         JLabel moLabel = new JLabel("MO");
 
-        moLabel.setBounds(10, 20, 80, 25);
+        moLabel.setBounds(45, 20, 80, 25);
+        moLabel.setFont(new Font("Arial", Font.BOLD, 18));
         panel.add(moLabel);
 
         JLabel part = new JLabel("PART");
 
-        part.setBounds(10, 80, 80, 25);
+        part.setBounds(45, 80, 80, 25);
+        part.setFont(new Font("Arial", Font.BOLD, 18));
         panel.add(part);
 
-        JLabel status = new JLabel("Machine");
+        JLabel machine = new JLabel("Machine");
 
-        status.setBounds(10, 180, 80, 25);
-        panel.add(status);
+        machine.setBounds(45, 180, 120, 45);
+        machine.setFont(new Font("Arial", Font.BOLD, 28));
+        panel.add(machine);
 
         JLabel side = new JLabel("SIDE");
 
-        side.setBounds(10, 250, 80, 25);
+        side.setBounds(45, 250, 80, 45);
+        side.setFont(new Font("Arial", Font.BOLD, 28));
         panel.add(side);
 
         JLabel position = new JLabel("Position");
 
-        position.setBounds(10, 320, 110, 25);
+        position.setBounds(45, 320, 110, 45);
+        position.setFont(new Font("Arial", Font.BOLD, 28));
         panel.add(position);
 
         JTextField userTextPart = new JTextField(20);
         userTextPart.setBounds(100, 80, 165, 25);
         panel.add(userTextPart);
 
-        JTextField userTextMachine = new JTextField(20);
-        userTextMachine.setBounds(100, 180, 165, 55);
-        userTextMachine.setFont(new Font("Arial", Font.PLAIN, 28));
-        panel.add(userTextMachine);
+        JTextField userTextMachineAimexII = new JTextField(20);
+        userTextMachineAimexII.setBounds(200, 180, 165, 65);
+        userTextMachineAimexII.setFont(new Font("Arial", Font.BOLD, 38));
+        userTextMachineAimexII.setEditable(false);
+        userTextMachineAimexII.setBackground(Color.white);
+        panel.add(userTextMachineAimexII);
 
-        JTextField userTextSide = new JTextField(20);
-        userTextSide.setBounds(100, 250, 65, 55);
-        userTextSide.setFont(new Font("Arial", Font.PLAIN, 28));
-        panel.add(userTextSide);
+        JTextField userTextSideAimexII = new JTextField(20);
+        userTextSideAimexII.setBounds(200, 250, 65, 65);
+        userTextSideAimexII.setFont(new Font("Arial", Font.BOLD, 38));
+        userTextSideAimexII.setEditable(false);
+        userTextSideAimexII.setBackground(Color.white);
+        panel.add(userTextSideAimexII);
 
-        JTextField userTextPosition = new JTextField(20);
-        userTextPosition.setBounds(100, 320, 65, 55);
-        userTextPosition.setFont(new Font("Arial", Font.PLAIN, 28));
-        panel.add(userTextPosition);
+        JTextField userTextPositionAimexII = new JTextField(20);
+        userTextPositionAimexII.setBounds(200, 320, 65, 65);
+        userTextPositionAimexII.setFont(new Font("Arial", Font.BOLD, 38));
+        userTextPositionAimexII.setEditable(false);
+        userTextPositionAimexII.setBackground(Color.white);
+        panel.add(userTextPositionAimexII);
+
+        JTextField userTextMachineAimexIII = new JTextField(20);
+        userTextMachineAimexIII.setBounds(400, 180, 165, 65);
+        userTextMachineAimexIII.setFont(new Font("Arial", Font.BOLD, 38));
+        userTextMachineAimexIII.setEditable(false);
+        userTextMachineAimexIII.setBackground(Color.white);
+        panel.add(userTextMachineAimexIII);
+
+        JTextField userTextSideAimexIII = new JTextField(20);
+        userTextSideAimexIII.setBounds(400, 250, 65, 65);
+        userTextSideAimexIII.setFont(new Font("Arial", Font.BOLD, 38));
+        userTextSideAimexIII.setEditable(false);
+        userTextSideAimexIII.setBackground(Color.white);
+        panel.add(userTextSideAimexIII);
+
+        JTextField userTextPositionAimexIII = new JTextField(20);
+        userTextPositionAimexIII.setBounds(400, 320, 65, 65);
+        userTextPositionAimexIII.setFont(new Font("Arial", Font.BOLD, 38));
+        userTextPositionAimexIII.setEditable(false);
+        userTextPositionAimexIII.setBackground(Color.white);
+        panel.add(userTextPositionAimexIII);
 
         JTextField userText5 = new JTextField(20);
         userText5.setBounds(100, 20, 80, 25);
         panel.add(userText5);
 
-        JButton unlockButton = new JButton("RESET");
-        unlockButton.setBounds(100, 45, 80, 25);
-        panel.add(unlockButton);
+        JButton resetButton = new JButton("RESET");
+        resetButton.setBounds(100, 45, 80, 25);
+        panel.add(resetButton);
         //setBounds(10, 80, 80, 25);
 
         JButton bButton = new JButton("B");
@@ -90,10 +122,16 @@ public class gui {
         panel.add(tButton);
 
         userTextPart.setEnabled(false);
-        userTextMachine.setVisible(false);
-        userTextSide.setVisible(false);
-        userTextPosition.setVisible(false);
+        userTextMachineAimexII.setVisible(false);
+        userTextSideAimexII.setVisible(false);
+        userTextPositionAimexII.setVisible(false);
+        userTextMachineAimexIII.setVisible(false);
+        userTextSideAimexIII.setVisible(false);
+        userTextPositionAimexIII.setVisible(false);
         userTextPart.setVisible(false);
+        bButton.setEnabled(false);
+        tButton.setEnabled(false);
+
         //JButton button = new JButton("Show");
         userTextPart.addActionListener(new ActionListener() {
             @Override
@@ -102,14 +140,29 @@ public class gui {
                 String[] inputText = input.split("-");
                 input = inputText[0];
                 String[] array = new Result().result(input,userText5.getText());
-               // BomEditor bomResult = new BomResult().bomEditor(bomName);
-                String machine = array[0];
                 String side = array[1];
                 String position = array[2];
-                userTextMachine.setText(machine);
-                userTextSide.setText(side);
-                userTextPosition.setText(position);
-                userTextPart.setText("");
+                String machine = array[0];
+                if(machine == "Aimex 2") {
+                    userTextMachineAimexII.setText(machine);
+                    userTextSideAimexII.setText(side);
+                    userTextPositionAimexII.setText(position);
+                    userTextPart.setText("");
+                    userTextMachineAimexIII.setText("");
+                    userTextSideAimexIII.setText("");
+                    userTextPositionAimexIII.setText("");
+                }
+                else if(machine == "Aimex 3"){
+                        userTextMachineAimexIII.setText(machine);
+                        userTextSideAimexIII.setText(side);
+                        userTextPositionAimexIII.setText(position);
+                        userTextPart.setText("");
+                        userTextMachineAimexII.setText("");
+                        userTextSideAimexII.setText("");
+                        userTextPositionAimexII.setText("");
+
+                }
+
 
             }
         });
@@ -124,24 +177,34 @@ public class gui {
                 userText5.setDisabledTextColor(Color.BLUE);
                 userTextPart.setVisible(true);
                 userTextPart.setEnabled(true);
-                userTextMachine.setVisible(true);
-                userTextSide.setVisible(true);
-                userTextPosition.setVisible(true);
+                userTextMachineAimexII.setVisible(true);
+                userTextSideAimexII.setVisible(true);
+                userTextPositionAimexII.setVisible(true);
+                userTextMachineAimexIII.setVisible(true);
+                userTextSideAimexIII.setVisible(true);
+                userTextPositionAimexIII.setVisible(true);
+                bButton.setEnabled(true);
+                tButton.setEnabled(true);
                 userTextPart.requestFocus();
             }
         });
 
 
         // Unlock Button ActionListener
-        unlockButton.addActionListener(new ActionListener() {
+        resetButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 userText5.setEnabled(true); // Enable the text field
                 userText5.setText("");
                 userTextPart.setEnabled(false);
-                userTextMachine.setVisible(false);
-                userTextSide.setVisible(false);
-                userTextPosition.setVisible(false);
+                userTextMachineAimexII.setVisible(false);
+                userTextSideAimexII.setVisible(false);
+                userTextPositionAimexII.setVisible(false);
+                bButton.setEnabled(false);
+                tButton.setEnabled(false);
+                userTextMachineAimexIII.setVisible(false);
+                userTextSideAimexIII.setVisible(false);
+                userTextPositionAimexIII.setVisible(false);
                 userText5.requestFocus();
             }
         });

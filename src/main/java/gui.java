@@ -162,6 +162,14 @@ public class gui {
                         userTextPositionAimexII.setText("");
 
                 }
+                else{
+                    userTextMachineAimexII.setText("");
+                    userTextSideAimexII.setText("");
+                    userTextPositionAimexII.setText("");
+                    userTextMachineAimexIII.setText("");
+                    userTextSideAimexIII.setText("");
+                    userTextPositionAimexIII.setText("");
+                }
 
 
             }

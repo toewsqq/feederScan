@@ -156,7 +156,7 @@ public class gui {
         if (Character.isDigit(lastChar)) {
             return s + 'B';
         }
-        else if (Character.isDefined('T')){
+        else if (lastChar == 'T'){
             return s.substring(0, s.length() - 1) + 'B';
         }
         return s;
@@ -170,7 +170,7 @@ public class gui {
         if (Character.isDigit(lastChar)) {
             return s + 'T';
         }
-        else if (Character.isDefined('B')){
+        else if (lastChar == 'B'){
             return s.substring(0, s.length() - 1) + 'T';
         }
         return s;

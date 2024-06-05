@@ -1,82 +1,23 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
+import java.awt.Font;
+
 
 public class gui {
     public static void main(String[] args) {
-        // Path to the file
-        //ArrayList result = new Result().createList();
 
-
-//        String currentWorkingDir = System.getProperty("user.dir");
-//        String export = currentWorkingDir + File.separator + "a.txt";
-        //String s = "C:\\Users\\Janis\\Desktop\\BomEditor\\BomEditor\\b.exe";
-
-//        try {
-//
-//            ProcessBuilder processBuilder = new ProcessBuilder(s);
-//            processBuilder.directory(new File("C:\\Users\\Janis\\Desktop\\BomEditor\\BomEditor"));
-//            processBuilder.redirectErrorStream(true); // Redirects error stream to the output stream
-//            Process process = processBuilder.start(); // Start the process
-//
-//            // Read the output from the command
-//            BufferedReader stdInput = new BufferedReader(new InputStreamReader(process.getInputStream()));
-//
-//            String output;
-//            while ((output = stdInput.readLine()) != null) {
-//                System.out.println(output);
-//            }
-//
-//            int exitVal = process.waitFor(); // Wait for the process to complete
-//            if (exitVal != 0) {
-//                // Check for any exit status other than 0, indicating an abnormal termination
-//                System.out.println("Process exited with error code " + exitVal);
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//            Thread.currentThread().interrupt(); // Set the interrupt flag of the thread
-//        }
-
-
-//        String s = "C:\\Users\\Janis\\Desktop\\BomEditor\\b.exe";
-//        Thread.sleep(1000);
-//        ProcessBuilder processBuilder = new ProcessBuilder(s);
-//
-//        // Start the process
-//        processBuilder.start();
-//        Runtime runtime = Runtime.getRuntime();
-//        Process pr = runtime.exec(s);
-
-
-        //Process pr = runtime.exec("C:\\Program Files\\Electronic Arts\\EA Desktop\\EA Desktop\\EALauncher.exe");
-        //Process pr = runtime.exec("C:\\Users\\Janis\\Desktop\\distr\\BOMexport2.1");
-        //Process pr = runtime.exec("notepad.exe ");
-        // Process pr = runtime.exec("notepad.exe " + export);
 
 
         JFrame frame = new JFrame("Feeder scan Beta version");
         // Setting the width and height of framez
-        frame.setSize(850, 600);
+        frame.setSize(650, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        /* Creating panel. This is same as a div tag in HTML
-         * We can create several panels and add them to specific
-         * positions in a JFrame. Inside panels we can add text
-         * fields, buttons and other components.
-         */
         JPanel panel = new JPanel();
         // adding panel to frame
         frame.add(panel);
-        /* calling user defined method for adding components
-         * to the panel.
-         */
+
         placeComponents(panel);
 
         // Setting the frame visibility to true
@@ -99,37 +40,40 @@ public class gui {
 
         JLabel status = new JLabel("Module");
 
-        status.setBounds(10, 120, 80, 25);
+        status.setBounds(10, 180, 80, 25);
         panel.add(status);
 
-        JLabel operations = new JLabel("Position");
+        JLabel side = new JLabel("SIDE");
 
-        operations.setBounds(10, 160, 80, 25);
-        panel.add(operations);
+        side.setBounds(10, 250, 80, 25);
+        panel.add(side);
 
-        JLabel smdOperations = new JLabel("SIDE");
+        JLabel position = new JLabel("Position");
 
-        smdOperations.setBounds(10, 200, 110, 25);
-        panel.add(smdOperations);
+        position.setBounds(10, 320, 110, 25);
+        panel.add(position);
 
         JTextField userText = new JTextField(20);
-        userText.setBounds(130, 80, 165, 25);
+        userText.setBounds(100, 80, 165, 25);
         panel.add(userText);
 
         JTextField userText2 = new JTextField(20);
-        userText2.setBounds(130, 120, 365, 25);
+        userText2.setBounds(100, 180, 165, 55);
+        userText2.setFont(new Font("Arial", Font.PLAIN, 28));
         panel.add(userText2);
 
         JTextField userText3 = new JTextField(20);
-        userText3.setBounds(130, 160, 365, 25);
+        userText3.setBounds(100, 250, 65, 55);
+        userText3.setFont(new Font("Arial", Font.PLAIN, 28));
         panel.add(userText3);
 
         JTextField userText4 = new JTextField(20);
-        userText4.setBounds(130, 200, 365, 25);
+        userText4.setBounds(100, 320, 65, 55);
+        userText4.setFont(new Font("Arial", Font.PLAIN, 28));
         panel.add(userText4);
 
         JTextField userText5 = new JTextField(20);
-        userText5.setBounds(130, 20, 365, 25);
+        userText5.setBounds(100, 20, 365, 25);
         panel.add(userText5);
 
         //JButton button = new JButton("Show");
@@ -144,7 +88,6 @@ public class gui {
                 String machine = array[0];
                 String side = array[1];
                 String position = array[2];
-                //String smdOperations = "asdad";
                 userText2.setText(machine);
                 userText3.setText(side);
                 userText4.setText(position);
@@ -153,14 +96,7 @@ public class gui {
             }
         });
 
-       // button.addActionListener(actionListener);
-        //userText.addActionListener(actionListener);
-        //button.setBounds(300, 20, 80, 25);
-        //panel.add(button);
-        // Adding a new button "Clear"
-//        JButton clearButton = new JButton("Clear");
-//        clearButton.setBounds(900, 20, 80, 25);
-//        panel.add(clearButton);
+
 
         // Clear Button ActionListener
         userText5.addActionListener(new ActionListener() {
@@ -175,7 +111,15 @@ public class gui {
         JButton unlockButton = new JButton("Unlock");
         unlockButton.setBounds(500, 20, 80, 25);
         panel.add(unlockButton);
+        //setBounds(10, 80, 80, 25);
 
+        JButton bButton = new JButton("B");
+        bButton.setBounds(300, 80, 55, 35);
+        panel.add(bButton);
+
+        JButton tButton = new JButton("T");
+        tButton.setBounds(400, 80, 55, 35);
+        panel.add(tButton);
         // Unlock Button ActionListener
         unlockButton.addActionListener(new ActionListener() {
             @Override
@@ -185,9 +129,52 @@ public class gui {
             }
         });
 
-//        clearButton.addActionListener(clearActionListener);
-//        userText5.addActionListener(actionListener);
 
+
+        bButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                userText5.setText(changeLastCharToB(userText5.getText()));
+            }
+        });
+        tButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                userText5.setText(changeLastCharToT(userText5.getText()));
+            }
+        });
+
+
+    }
+
+    //metodes
+    public static String changeLastCharToB(String s) {
+        if (s == null || s.length() == 0) {
+            return s;  // If the string is null or empty, return it as is
+        }
+        char lastChar = s.charAt(s.length() - 1);
+        if (Character.isDigit(lastChar)) {
+            return s + 'B';
+        }
+        else if (Character.isDefined('T')){
+            return s.substring(0, s.length() - 1) + 'B';
+        }
+        return s;
+    }
+
+    public static String changeLastCharToT(String s) {
+        if (s == null || s.length() == 0) {
+            return s;  // If the string is null or empty, return it as is
+        }
+        char lastChar = s.charAt(s.length() - 1);
+        if (Character.isDigit(lastChar)) {
+            return s + 'T';
+        }
+        else if (Character.isDefined('B')){
+            return s.substring(0, s.length() - 1) + 'T';
+        }
+        return s;
+        //return s .substring(0, s.length() - 1) + 'B';
     }
 }
 

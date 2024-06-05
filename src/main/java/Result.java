@@ -10,11 +10,7 @@ import java.util.Scanner;
 
 public class Result {
     public ArrayList createList(String name) {
-//        Scanner scanner = new Scanner(System.in);
-//        System.out.println("Enter the value to match: ");
-//        String userInput = scanner.nextLine().trim();
-//        String[] inputText = userInput.split("-");
-//        userInput = inputText[0];
+
         String currentWorkingDir = System.getProperty("user.dir");
         String fileForEdit = currentWorkingDir + File.separator + name + ".txt";
         String machine = "Aimex 2";

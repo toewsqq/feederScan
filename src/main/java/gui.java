@@ -1,7 +1,7 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.Font;
 
 
 public class gui {
@@ -33,12 +33,12 @@ public class gui {
         moLabel.setBounds(10, 20, 80, 25);
         panel.add(moLabel);
 
-        JLabel jobNameLabel = new JLabel("PART");
+        JLabel part = new JLabel("PART");
 
-        jobNameLabel.setBounds(10, 80, 80, 25);
-        panel.add(jobNameLabel);
+        part.setBounds(10, 80, 80, 25);
+        panel.add(part);
 
-        JLabel status = new JLabel("Module");
+        JLabel status = new JLabel("Machine");
 
         status.setBounds(10, 180, 80, 25);
         panel.add(status);
@@ -53,34 +53,52 @@ public class gui {
         position.setBounds(10, 320, 110, 25);
         panel.add(position);
 
-        JTextField userText = new JTextField(20);
-        userText.setBounds(100, 80, 165, 25);
-        panel.add(userText);
+        JTextField userTextPart = new JTextField(20);
+        userTextPart.setBounds(100, 80, 165, 25);
+        panel.add(userTextPart);
 
-        JTextField userText2 = new JTextField(20);
-        userText2.setBounds(100, 180, 165, 55);
-        userText2.setFont(new Font("Arial", Font.PLAIN, 28));
-        panel.add(userText2);
+        JTextField userTextMachine = new JTextField(20);
+        userTextMachine.setBounds(100, 180, 165, 55);
+        userTextMachine.setFont(new Font("Arial", Font.PLAIN, 28));
+        panel.add(userTextMachine);
 
-        JTextField userText3 = new JTextField(20);
-        userText3.setBounds(100, 250, 65, 55);
-        userText3.setFont(new Font("Arial", Font.PLAIN, 28));
-        panel.add(userText3);
+        JTextField userTextSide = new JTextField(20);
+        userTextSide.setBounds(100, 250, 65, 55);
+        userTextSide.setFont(new Font("Arial", Font.PLAIN, 28));
+        panel.add(userTextSide);
 
-        JTextField userText4 = new JTextField(20);
-        userText4.setBounds(100, 320, 65, 55);
-        userText4.setFont(new Font("Arial", Font.PLAIN, 28));
-        panel.add(userText4);
+        JTextField userTextPosition = new JTextField(20);
+        userTextPosition.setBounds(100, 320, 65, 55);
+        userTextPosition.setFont(new Font("Arial", Font.PLAIN, 28));
+        panel.add(userTextPosition);
 
         JTextField userText5 = new JTextField(20);
-        userText5.setBounds(100, 20, 365, 25);
+        userText5.setBounds(100, 20, 80, 25);
         panel.add(userText5);
 
+        JButton unlockButton = new JButton("RESET");
+        unlockButton.setBounds(100, 45, 80, 25);
+        panel.add(unlockButton);
+        //setBounds(10, 80, 80, 25);
+
+        JButton bButton = new JButton("B");
+        bButton.setBounds(195, 30, 55, 35);
+        panel.add(bButton);
+
+        JButton tButton = new JButton("T");
+        tButton.setBounds(250, 30, 55, 35);
+        panel.add(tButton);
+
+        userTextPart.setEnabled(false);
+        userTextMachine.setVisible(false);
+        userTextSide.setVisible(false);
+        userTextPosition.setVisible(false);
+        userTextPart.setVisible(false);
         //JButton button = new JButton("Show");
-        userText.addActionListener(new ActionListener() {
+        userTextPart.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String input = userText.getText();
+                String input = userTextPart.getText();
                 String[] inputText = input.split("-");
                 input = inputText[0];
                 String[] array = new Result().result(input,userText5.getText());
@@ -88,10 +106,10 @@ public class gui {
                 String machine = array[0];
                 String side = array[1];
                 String position = array[2];
-                userText2.setText(machine);
-                userText3.setText(side);
-                userText4.setText(position);
-                userText.setText("");
+                userTextMachine.setText(machine);
+                userTextSide.setText(side);
+                userTextPosition.setText(position);
+                userTextPart.setText("");
 
             }
         });
@@ -103,47 +121,46 @@ public class gui {
             @Override
             public void actionPerformed(ActionEvent e) {
                 userText5.setEnabled(false);
-                userText.requestFocus();
+                userText5.setDisabledTextColor(Color.BLUE);
+                userTextPart.setVisible(true);
+                userTextPart.setEnabled(true);
+                userTextMachine.setVisible(true);
+                userTextSide.setVisible(true);
+                userTextPosition.setVisible(true);
+                userTextPart.requestFocus();
             }
         });
 
-        // Unlock Button
-        JButton unlockButton = new JButton("Unlock");
-        unlockButton.setBounds(500, 20, 80, 25);
-        panel.add(unlockButton);
-        //setBounds(10, 80, 80, 25);
 
-        JButton bButton = new JButton("B");
-        bButton.setBounds(300, 80, 55, 35);
-        panel.add(bButton);
-
-        JButton tButton = new JButton("T");
-        tButton.setBounds(400, 80, 55, 35);
-        panel.add(tButton);
         // Unlock Button ActionListener
         unlockButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 userText5.setEnabled(true); // Enable the text field
                 userText5.setText("");
+                userTextPart.setEnabled(false);
+                userTextMachine.setVisible(false);
+                userTextSide.setVisible(false);
+                userTextPosition.setVisible(false);
+                userText5.requestFocus();
             }
         });
-
 
 
         bButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 userText5.setText(changeLastCharToB(userText5.getText()));
+                userTextPart.requestFocus();
             }
         });
         tButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 userText5.setText(changeLastCharToT(userText5.getText()));
+                userTextPart.requestFocus();
             }
         });
-
 
     }
 
